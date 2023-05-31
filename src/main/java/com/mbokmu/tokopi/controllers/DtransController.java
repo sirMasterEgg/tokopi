@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/dtrans")
+@RequestMapping("/api/dtrans")
 public class DtransController {
     @Autowired
     DtransService service;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/htrans")
+@RequestMapping("/api/htrans")
 public class HtransController {
     @Autowired
     HtransService service;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("/api/menu")
 public class MenuController {
     @Autowired
     MenuService service;
