@@ -12,6 +12,7 @@ public class Dtrans extends BaseEntity {
     int qty;
     int price;
     int subtotal;
+    String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

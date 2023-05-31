@@ -1,12 +1,12 @@
 package com.mbokmu.tokopi.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 @MappedSuperclass
+@Getter
 public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

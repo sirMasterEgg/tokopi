@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Htrans extends BaseEntity {
+    int total_item;
     int total_price;
     String status;
 
