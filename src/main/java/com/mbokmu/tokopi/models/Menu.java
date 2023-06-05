@@ -18,7 +18,7 @@ public class Menu extends BaseEntity {
     String category;
     String image_url;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "menu")
     List<Dtrans> dtrans;
+
 }

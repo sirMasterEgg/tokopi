@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "3e4fa7d6-cc2f-49c3-839a-f810711499e5",
+		"name": "tokopi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25927015"
+	},
+	"item": [
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kopi\",\r\n    \"description\": \"Ini kopi\",\r\n    \"price\": 15000,\r\n    \"category\": \"Coffee\",\r\n    \"image_url\": \"kopi.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/menu",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/menu",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/menu/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"menu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Htrans",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"total_item\": 2,\r\n    \"total_price\": 60000,\r\n    \"status\": \"Pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/htrans",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"htrans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/htrans",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"htrans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/htrans/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"htrans",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dtrans",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"qty\": 1,\r\n    \"price\": 20000,\r\n    \"subtotal\": 20000,\r\n    \"status\": \"Done\",\r\n    \"htrans\": {\r\n        \"id\": 1\r\n    },\r\n    \"menu\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/dtrans",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dtrans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/dtrans",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dtrans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/dtrans/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dtrans",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
