@@ -1,6 +1,8 @@
 package com.mbokmu.tokopi.controllers;
 
+import com.mbokmu.tokopi.dto.DtransDto;
 import com.mbokmu.tokopi.models.Dtrans;
+import com.mbokmu.tokopi.models.Htrans;
 import com.mbokmu.tokopi.services.DtransService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,9 @@ public class DtransController {
     DtransService service;
 
     @PostMapping("")
-    public ResponseEntity<Dtrans> save(@RequestBody Dtrans obj) {
-        service.save(obj);
-        return ResponseEntity.ok(obj);
+    public ResponseEntity<Dtrans> save(@RequestBody DtransDto obj) {
+        Dtrans result = service.saveWithDto(obj);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("")
@@ -30,4 +32,6 @@ public class DtransController {
     public Optional<Dtrans> findById(@PathVariable Integer id) {
         return service.findById(id);
     }
+
+
 }
