@@ -1,6 +1,8 @@
 package com.mbokmu.tokopi.controllers;
 
 import com.mbokmu.tokopi.dto.DtransDto;
+import com.mbokmu.tokopi.dto.DtransUpdateDto;
+import com.mbokmu.tokopi.dto.HtransUpdateDto;
 import com.mbokmu.tokopi.models.Dtrans;
 import com.mbokmu.tokopi.models.Htrans;
 import com.mbokmu.tokopi.services.DtransService;
@@ -33,5 +35,10 @@ public class DtransController {
         return service.findById(id);
     }
 
+    @PatchMapping("/update-status")
+    public ResponseEntity<Dtrans> updateStatus(@RequestBody DtransUpdateDto obj) {
+        Dtrans result = service.updateStatus(obj);
+        return ResponseEntity.ok(result);
+    }
 
 }

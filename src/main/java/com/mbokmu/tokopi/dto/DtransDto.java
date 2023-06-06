@@ -7,20 +7,18 @@ import lombok.Setter;
 public class DtransDto {
     private int qty;
     private int price;
-    private int subtotal;
     private String status;
-    private int htransId;
-    private int menuId;
+    private int htrans_id;
+    private int menu_id;
 
     public DtransDto() {
     }
 
-    public DtransDto(int qty, int price, int subtotal, String status, int htransId, int menuId) {
+    public DtransDto(int qty, int price, String status, int htrans_id, int menu_id) {
         this.qty = qty;
         this.price = price;
-        this.subtotal = subtotal;
         this.status = status;
-        this.htransId = htransId;
-        this.menuId = menuId;
+        this.htrans_id = htrans_id;
+        this.menu_id = menu_id;
     }
 }

@@ -1,5 +1,6 @@
 package com.mbokmu.tokopi.controllers;
 
+import com.mbokmu.tokopi.dto.HtransUpdateDto;
 import com.mbokmu.tokopi.models.Htrans;
 import com.mbokmu.tokopi.services.HtransService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,11 @@ public class HtransController {
     @GetMapping("/{id}")
     public Optional<Htrans> findById(@PathVariable Integer id) {
         return service.findById(id);
+    }
+
+    @PatchMapping("/update-status")
+    public ResponseEntity<Htrans> updateStatus(@RequestBody HtransUpdateDto obj) {
+        Htrans result = service.updateStatus(obj);
+        return ResponseEntity.ok(result);
     }
 }

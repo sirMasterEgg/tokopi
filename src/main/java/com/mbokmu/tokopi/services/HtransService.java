@@ -1,5 +1,6 @@
 package com.mbokmu.tokopi.services;
 
+import com.mbokmu.tokopi.dto.HtransUpdateDto;
 import com.mbokmu.tokopi.models.Htrans;
 import com.mbokmu.tokopi.repositories.HtransRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,11 @@ public class HtransService {
 
     public Optional<Htrans> findById(Integer id) {
         return repository.findById(id);
+    }
+
+    public Htrans updateStatus(HtransUpdateDto obj) {
+        Htrans htrans = repository.findById(obj.getId()).get();
+        htrans.setStatus(obj.getStatus());
+        return repository.save(htrans);
     }
 }

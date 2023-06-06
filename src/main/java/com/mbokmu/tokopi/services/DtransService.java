@@ -1,6 +1,7 @@
 package com.mbokmu.tokopi.services;
 
 import com.mbokmu.tokopi.dto.DtransDto;
+import com.mbokmu.tokopi.dto.DtransUpdateDto;
 import com.mbokmu.tokopi.models.Dtrans;
 import com.mbokmu.tokopi.models.Htrans;
 import com.mbokmu.tokopi.models.Menu;
@@ -42,27 +43,42 @@ public class DtransService {
         return repository.findById(id);
     }
 
-    public Htrans convertToHtrans(DtransDto dto) {
+    private Htrans convertToHtrans(DtransDto dto) {
         // Fetch the Htrans entity from the database using the htransId
-        Htrans htrans = htransRepository.findById(dto.getHtransId()).orElseThrow(() -> new EntityNotFoundException("Htrans not found"));
+        Htrans htrans = htransRepository.findById(dto.getHtrans_id()).orElseThrow(() -> new EntityNotFoundException("Htrans not found"));
 
         return htrans;
     }
-    public Menu convertToMenu(DtransDto dto) {
+    private Menu convertToMenu(DtransDto dto) {
         // Fetch the Htrans entity from the database using the htransId
-        Menu menu = menuRepository.findById(dto.getMenuId()).orElseThrow(() -> new EntityNotFoundException("Menu not found"));
+        Menu menu = menuRepository.findById(dto.getMenu_id()).orElseThrow(() -> new EntityNotFoundException("Menu not found"));
 
         return menu;
     }
 
     public Dtrans saveWithDto(DtransDto obj){
         Dtrans dtrans = new Dtrans();
+        int subtotal = obj.getQty() * obj.getPrice();
         dtrans.setHtrans(convertToHtrans(obj));
         dtrans.setMenu(convertToMenu(obj));
         dtrans.setQty(obj.getQty());
         dtrans.setPrice(obj.getPrice());
-        dtrans.setSubtotal(obj.getSubtotal());
+        dtrans.setSubtotal(subtotal);
         dtrans.setStatus(obj.getStatus());
+
+        Htrans htrans = htransRepository.findById(obj.getHtrans_id()).get();
+        htrans.setTotal_price(htrans.getTotal_price() + subtotal);
+        htrans.setTotal_item(htrans.getTotal_item() + obj.getQty());
+
+        htransRepository.save(htrans);
+
         return save(dtrans);
     }
+
+    public Dtrans updateStatus(DtransUpdateDto obj) {
+        Dtrans dtrans = repository.findById(obj.getId()).get();
+        dtrans.setStatus(obj.getStatus());
+        return repository.save(dtrans);
+    }
+
 }
