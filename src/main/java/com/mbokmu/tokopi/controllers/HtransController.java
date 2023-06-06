@@ -1,7 +1,11 @@
 package com.mbokmu.tokopi.controllers;
 
+import com.mbokmu.tokopi.dto.HtransInsertDto;
 import com.mbokmu.tokopi.dto.HtransUpdateDto;
+import com.mbokmu.tokopi.dto.response.HtransFindResponse;
+import com.mbokmu.tokopi.dto.response.HtransInsertResponse;
 import com.mbokmu.tokopi.models.Htrans;
+import com.mbokmu.tokopi.services.CustomerTableService;
 import com.mbokmu.tokopi.services.HtransService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,24 +21,24 @@ public class HtransController {
     HtransService service;
 
     @PostMapping("")
-    public ResponseEntity<Htrans> save(@RequestBody Htrans obj) {
-        service.save(obj);
-        return ResponseEntity.ok(obj);
+    public ResponseEntity<HtransInsertResponse> save(@RequestBody HtransInsertDto obj) {
+        var result = service.insert(obj);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("")
-    public List<Htrans> findAll() {
+    public List<HtransFindResponse> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Htrans> findById(@PathVariable Integer id) {
+    public Optional<HtransFindResponse> findById(@PathVariable Integer id) {
         return service.findById(id);
     }
 
     @PatchMapping("/update-status")
-    public ResponseEntity<Htrans> updateStatus(@RequestBody HtransUpdateDto obj) {
-        Htrans result = service.updateStatus(obj);
+    public ResponseEntity<HtransFindResponse> updateStatus(@RequestBody HtransUpdateDto obj) {
+        HtransFindResponse result = service.updateStatus(obj);
         return ResponseEntity.ok(result);
     }
 }
