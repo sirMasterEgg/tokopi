@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3e4fa7d6-cc2f-49c3-839a-f810711499e5",
+		"_postman_id": "160751bb-8969-4792-954c-e9cb037890bd",
 		"name": "tokopi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25927015"
+		"_exporter_id": "24652077"
 	},
 	"item": [
 		{
@@ -91,7 +91,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"total_item\": 2,\r\n    \"total_price\": 60000,\r\n    \"status\": \"Pending\"\r\n}",
+							"raw": "{\r\n    \"table_number\": \"TABLE002\",\r\n    \"status\": \"Pending\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,6 +153,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "updateStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"status\": \"Ok\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/htrans/update-status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"htrans",
+								"update-status"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -166,7 +194,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"qty\": 1,\r\n    \"price\": 20000,\r\n    \"subtotal\": 20000,\r\n    \"status\": \"Done\",\r\n    \"htrans\": {\r\n        \"id\": 1\r\n    },\r\n    \"menu\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"qty\": 10,\r\n    \"price\": 20000,\r\n    \"status\": \"Done\",\r\n    \"htrans_id\": 6,\r\n    \"menu_id\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -228,8 +256,74 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "updateStatusMakanan",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"status\": \"Cancelled\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/dtrans/update-status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dtrans",
+								"update-status"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Table",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"table_number\": \"TABLE002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/table",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"table"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:8080"
 		}
 	]
 }
