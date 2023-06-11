@@ -31,6 +31,11 @@ public class HtransController {
         return service.findAll();
     }
 
+    @GetMapping("/htrans/last")
+    public Htrans findLast() {
+        return service.findLast();
+    }
+
     @GetMapping("/{id}")
     public Optional<HtransFindResponse> findById(@PathVariable Integer id) {
         return service.findById(id);
