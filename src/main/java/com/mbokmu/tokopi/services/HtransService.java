@@ -31,7 +31,7 @@ public class HtransService {
 
         List<HtransFindResponse> result = new ArrayList<>();
 
-        for (Htrans ht : htrans){
+        for (Htrans ht : htrans) {
             var table = ht.getTable() == null ? null : ht.getTable().getTable_number();
 
             result.add(new HtransFindResponse(
@@ -47,6 +47,10 @@ public class HtransService {
         }
 
         return result;
+    }
+
+    public Htrans findLast() {
+        return repository.findLast();
     }
 
     public Optional<HtransFindResponse> findById(Integer id) {
@@ -87,7 +91,7 @@ public class HtransService {
         Htrans htrans = new Htrans();
         var table = customerTableRepository.findTableIdByTableNumber(obj.getTable_number());
 
-        if (table == null){
+        if (table == null) {
             return null;
         }
 
