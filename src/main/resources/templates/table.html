@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Tokopi</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico"/>
@@ -11,22 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/assets/css/styles.css" rel="stylesheet"/>
-    <style>
-        .w-custom {
-            width: calc(25% - 0.5rem);
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            /* display: none; <- Crashes Chrome on hover */
-            -webkit-appearance: none;
-            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-
-        input[type=number] {
-            -moz-appearance: textfield; /* Firefox */
-        }
-    </style>
 </head>
 <body>
 <header>
@@ -55,38 +39,19 @@
 <!-- ============================================================Content======================================================================== -->
 <section class="page-section">
     <div class="container">
-        <div id="product-showcase" class="d-flex gap-2 flex-wrap">
-            <div class="product-item bg-faded rounded w-custom" th:each="menu : ${menus}">
-                <div class="w-100">
-                    <div class="bg-faded pt-3 px-3 d-flex rounded">
-                        <h2 class="section-heading mb-0">
-                            <span class="section-heading-upper"
-                                  th:text="${menu.name}">Strawberry Frappe</span>
-                        </h2>
-                    </div>
-                    <div class="bg-faded pb-3 px-3 d-flex rounded">
-                        <h4 class="section-heading mb-0">
-                            <span class="section-heading-upper"
-                                  th:text="${'('+menu.getCategory()+')'}">(Non-Coffee)</span>
-                        </h4>
-                    </div>
-                </div>
-                <img class="d-flex w-100 img-fluid mb-3 mb-lg-0 bg-white "
-                     th:src="${'/assets/img/menu/' + menu.getImage_url()}" src="/assets/img/menu/strawberry-frappe.png"
-                     th:alt="${menu.getName()}" alt="..."/>
-                <div class="d-flex">
-                    <div class="bg-faded p-3 rounded">
-                        <p class="mb-0" th:text="${menu.getDescription()}">
-                            Strawberry Frappe is a drink made from fresh strawberries and milk. This drink is very
-                            suitable for those of you who like sweet and fresh drinks.
-                        </p>
-                        <h2 class="mb-0">
-                            <span class="section-heading-upper" th:text="${'Rp' + menu.price}">Strawberry Frappe</span>
-                        </h2>
-                    </div>
-                </div>
+        <form th:action="@{/table/save}" th:object="${htrans}" method="post"
+              class="form-control d-flex flex-column justify-content-center bg-dark bg-opacity-75 p-5 gap-2">
+            <div class="fw-bold fs-3 text-white"> Table Number :</div>
+            <select th:field="*{table_number}" class="form-select">
+                <option th:each="table : ${tables}"
+                        th:value="${table.getTable_number()}"
+                        th:text="${table.getTable_number()}">
+                </option>
+            </select>
+            <div>
+                <button class="btn btn-primary btn-lg w-100 h-50 mt-4">Submit</button>
             </div>
-        </div>
+        </form>
     </div>
 </section>
 <!-- ============================================================Content======================================================================== -->

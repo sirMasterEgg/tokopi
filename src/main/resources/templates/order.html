@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Tokopi</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico"/>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/assets/css/styles.css" rel="stylesheet" />
+    <link href="/assets/css/styles.css" rel="stylesheet"/>
+    <script src="/assets/js/jquery.js"></script>
+    <style>
+        .w-custom {
+            width: calc(25% - 0.5rem);
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield; /* Firefox */
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -23,106 +39,140 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
-        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/">TOKOPI</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/">Home</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/menu">Products</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/order">Order</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/table">Order</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <!-- ============================================================Content======================================================================== -->
-<section class="page-section cta">
+<section class="page-section">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <div class="cta-inner bg-faded text-center rounded">
-                    <h2 class="section-heading mb-5">
-                        <span class="section-heading-upper">Come On In</span>
-                        <span class="section-heading-lower">We're Open</span>
-                    </h2>
-                    <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Sunday
-                            <span class="ms-auto">Closed</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Monday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Tuesday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Wednesday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Thursday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Friday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Saturday
-                            <span class="ms-auto">9:00 AM to 5:00 PM</span>
-                        </li>
-                    </ul>
-                    <p class="address mb-5">
-                        <em>
-                            <strong>1116 Orchard Street</strong>
-                            <br />
-                            Golden Valley, Minnesota
-                        </em>
-                    </p>
-                    <p class="mb-0">
-                        <small><em>Call Anytime</em></small>
-                        <br />
-                        (317) 585-8468
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="page-section about-heading">
-    <div class="container">
-        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/img/about.jpg" alt="..." />
-        <div class="about-heading-content">
-            <div class="row">
-                <div class="col-xl-9 col-lg-10 mx-auto">
-                    <div class="bg-faded rounded p-5">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
-                            <span class="section-heading-lower">About Our Cafe</span>
+
+        <div id="product-showcase" class="d-flex gap-2 flex-wrap">
+            <div class="product-item bg-faded rounded w-custom" th:each="menu : ${menus}">
+                <div class="w-100">
+                    <div class="bg-faded pt-3 px-3 d-flex rounded">
+                        <h2 class="section-heading mb-0">
+                            <span class="section-heading-upper"
+                                  th:text="${menu.name}">Strawberry Frappe</span>
                         </h2>
-                        <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.</p>
-                        <p class="mb-0">
-                            We guarantee that you will fall in
-                            <em>lust</em>
-                            with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.
+                    </div>
+                    <div class="bg-faded pb-3 px-3 d-flex rounded">
+                        <h4 class="section-heading mb-0">
+                            <span class="section-heading-upper"
+                                  th:text="${'('+menu.getCategory()+')'}">(Non-Coffee)</span>
+                        </h4>
+                    </div>
+                </div>
+                <img class="d-flex w-100 img-fluid mb-3 mb-lg-0 bg-white "
+                     th:src="${'/assets/img/menu/' + menu.getImage_url()}" src="/assets/img/menu/strawberry-frappe.png"
+                     th:alt="${menu.getName()}" alt="..."/>
+                <div class="d-flex">
+                    <div class="bg-faded p-3 rounded">
+                        <p class="mb-0" th:text="${menu.getDescription()}">
+                            Strawberry Frappe is a drink made from fresh strawberries and milk. This drink is very
+                            suitable for those of you who like sweet and fresh drinks.
                         </p>
+                        <h2 class="mb-0">
+                            <span class="section-heading-upper" th:text="${'Rp' + menu.price}">Strawberry Frappe</span>
+                        </h2>
+                        <button class="btn btn-primary w-100" type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#orderConfirm"
+                                onclick="orderButtonClick(this)"
+                                th:attr="data-id=${menu.getId()}, data-name=${menu.getName()}, data-price=${menu.getPrice()}">
+                            <!--                                data-th-attr="data-makanan-id=${}"-->
+                            <!--                                data-th-attrappend="data-makanan-nama=${menu.getName()} + ' - Rp' + ${menu.getPrice()}"-->
+                            Order
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="orderConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Order</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" id="btnClose"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2 class="section-heading mb-0">
+                    <span id="foodName" class="section-heading-upper"></span>
+                </h2>
+                <form id="orderForm" action="" method="post">
+                    <input type="hidden" name="foodId" id="foodId" value="">
+                    <input type="hidden" name="foodPrice" id="foodPrice" value="">
+                    <input type="number" value="1" min="1" name="foodQuantity" id="foodQuantity">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="placeOrder(this)">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ============================================================Content======================================================================== -->
 
 <footer class="footer text-faded text-center py-5">
     <div class="container"><p class="m-0 small">Copyright &copy; Tokopi 2023</p></div>
 </footer>
+
+<script src="/assets/js/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner()
+</script>
+
+<script>
+    function orderButtonClick(e) {
+        let id = e.getAttribute("data-id");
+        let name = e.getAttribute("data-name");
+        let price = e.getAttribute("data-price");
+        document.getElementById("foodName").innerHTML = name + " - Rp" + price;
+        document.getElementById("foodId").value = id;
+        document.getElementById("foodPrice").value = price;
+    }
+
+    function placeOrder(e) {
+        let menu_id = document.getElementById("foodId").value;
+        let price = document.getElementById("foodPrice").value;
+        let qty = document.getElementById("foodQuantity").value;
+        let htrans_id = window.location.pathname.split('/').at(2);
+
+        const map = {};
+        map["qty"] = qty;
+        map["price"] = price;
+        map["menu_id"] = menu_id;
+
+        $.ajax({
+            type: "POST",
+            url: `/order/${htrans_id}/save`,
+            contentType: "application/json",
+            data: JSON.stringify(map)
+        });
+
+        document.getElementById("btnClose").click();
+    }
+</script>
+
 <!-- Bootstrap core JS-->
 <script src="/assets/js/bootstrap.min.js"></script>
-<!-- Core theme JS-->
-<script src="/assets/js/scripts.js"></script>
 </body>
 </html>

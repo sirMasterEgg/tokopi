@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Tokopi</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico"/>
@@ -11,22 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/assets/css/styles.css" rel="stylesheet"/>
-    <style>
-        .w-custom {
-            width: calc(25% - 0.5rem);
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            /* display: none; <- Crashes Chrome on hover */
-            -webkit-appearance: none;
-            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-
-        input[type=number] {
-            -moz-appearance: textfield; /* Firefox */
-        }
-    </style>
+    <script src="/assets/js/jquery.js"></script>
 </head>
 <body>
 <header>
@@ -55,36 +40,16 @@
 <!-- ============================================================Content======================================================================== -->
 <section class="page-section">
     <div class="container">
-        <div id="product-showcase" class="d-flex gap-2 flex-wrap">
-            <div class="product-item bg-faded rounded w-custom" th:each="menu : ${menus}">
-                <div class="w-100">
-                    <div class="bg-faded pt-3 px-3 d-flex rounded">
-                        <h2 class="section-heading mb-0">
-                            <span class="section-heading-upper"
-                                  th:text="${menu.name}">Strawberry Frappe</span>
-                        </h2>
+        <div class="d-flex flex-column gap-4 flex-wrap text-white">
+            <div th:each="htrans : ${htransList}" data-th-attr="data-htrans-id=${htrans.getId()}"
+                 onclick="history(this)" style="cursor: pointer" class="bg-dark bg-opacity-50 p-2 rounded-2">
+                <div class="d-flex justify-content-between fw-bold fs-2">
+                    <div th:text="${'ORDER ' + htrans.getId() + ' - ' + htrans.getTable_number()}">
+                        ORDER ID - TABLE NUMBER
                     </div>
-                    <div class="bg-faded pb-3 px-3 d-flex rounded">
-                        <h4 class="section-heading mb-0">
-                            <span class="section-heading-upper"
-                                  th:text="${'('+menu.getCategory()+')'}">(Non-Coffee)</span>
-                        </h4>
-                    </div>
+                    <div th:text="${htrans.getStatus()}">STATUS</div>
                 </div>
-                <img class="d-flex w-100 img-fluid mb-3 mb-lg-0 bg-white "
-                     th:src="${'/assets/img/menu/' + menu.getImage_url()}" src="/assets/img/menu/strawberry-frappe.png"
-                     th:alt="${menu.getName()}" alt="..."/>
-                <div class="d-flex">
-                    <div class="bg-faded p-3 rounded">
-                        <p class="mb-0" th:text="${menu.getDescription()}">
-                            Strawberry Frappe is a drink made from fresh strawberries and milk. This drink is very
-                            suitable for those of you who like sweet and fresh drinks.
-                        </p>
-                        <h2 class="mb-0">
-                            <span class="section-heading-upper" th:text="${'Rp' + menu.price}">Strawberry Frappe</span>
-                        </h2>
-                    </div>
-                </div>
+                <div th:text="${'Total Item: ' + htrans.getTotal_item()}" class="fs-4">TOTAL ITEM</div>
             </div>
         </div>
     </div>
@@ -94,6 +59,12 @@
 <footer class="footer text-faded text-center py-5">
     <div class="container"><p class="m-0 small">Copyright &copy; Tokopi 2023</p></div>
 </footer>
+
+<script>
+    function history(e) {
+        console.log(e.getAttribute("data-htrans-id"))
+    }
+</script>
 
 <!-- Bootstrap core JS-->
 <script src="/assets/js/bootstrap.min.js"></script>
